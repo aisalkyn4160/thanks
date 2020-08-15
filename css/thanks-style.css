@@ -18,6 +18,9 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.mobile-header{
+  display: none;
+}
 .header__title h1 {
   font-size: 24px;
   font-weight: bold;
@@ -106,11 +109,6 @@ body {
   font-weight: 500;
   text-align: center;
 }
-@media (max-width: 730px){
-  .main__text{
-    height: fit-content;
-  }
-}
 .footer {
   padding: 20px 0 10px;
   background: #f0f0f0;
@@ -184,74 +182,134 @@ body {
  text-decoration: underline;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 850px) {
  .header{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
- } 
-.header__title{
-    padding-right: 0;
-  }
-  .header__title span {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 19px;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 20px 0;
-    border: none;
-  }
-  .header__title h1,
-  .header__contact p,
-  .header__contact p:nth-child(3)::before {
     display: none;
   }
-  .header__contact p:nth-child(2),
-  .header__contact p:nth-child(3) {
+  .mobile-header{
     display: block;
-    width: auto;
-    padding: 0;
-    margin: 0;
-    text-transform: uppercase;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 11;
   }
-  .header__contact p:nth-child(3) {
-    font-size: 20px;
-    order: 1;
-  }
-  .header__contact p:nth-child(2) {
-    font-size: 16px;
-    font-weight: normal;
-    order: 3;
-    border: none;
-  }
-  .header__contact {
+  .head-wrap{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
+    position: relative;
+    background: #252525;
+    padding: 10px 15px;
+    height: 66px;
   }
-  .header__button {
-    min-width: max-content;
-    order: 2;
-    margin: 20px auto;
-    padding: 20px 15px;
+  .header-caption{
+    width: 50%;
   }
-  .footer{
-  padding: 30px 0 20px;
+  .header-caption h1{
+    font-size: 11px;
+    line-height: 13px;
+    padding-left: 60px;
+    margin-left: -12px;
+    position: relative;
+    color: #ACACAC;
+  }
+  .header-caption h1:before{
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 60px;
+    background: url("../img/photo_2020-08-13_17-15-21 1.png") 50% 50%/cover no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  .header-caption span{
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .phone-btn{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url(../img/headerphone.png) 50% 50%/100% no-repeat;
+  }
+  #menu{
+    display: none;
+  }
+
+  .header-buttons label{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: #fff url("../img/menu.png") 50% 50%/60% no-repeat;
+  }
+  .main-nav{
+    max-height: 0;
+    width: 100%;
+    position: absolute;
+    top: 66px;
+    left: 0;
+    z-index: 20;
+    overflow: hidden;
+    transition: max-height 1s;
+    box-shadow: 0 9px 13px rgba(0,0,0,.2);
+  }
+  .main-list li{
+    background: #fff;
+    padding: 21px;
+  }
+  .main-list a{
+    color: #000;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  #menu:checked ~ .main-nav{
+    max-height: 300px;
+  }
+  .main{
+    min-height: 200px
+  }
+  .main__text p{
+    font-size: 16px;
+  }
+  .main__text {
+  padding: 10px;
+  width: 85%;
+  border: 2px solid #ffcc39;
+  background-color: rgba(0,0,0,0.5);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.footer{
+  padding: 20px 0 20px;
 }
 .footer-wrap{
   flex-direction: column;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 .footer .header__title{
   width: 100%;
 }
+.footer .header__title h1{
+  display: none;
+}
 .footer .header__title span{
  border: none;
+ text-transform: uppercase;
+ font-weight: bold;
+ padding: 0;
+ font-size: 14px;
 }
 .experience{
   width: 100%;
@@ -270,7 +328,8 @@ body {
 .experience p:before{
   display: none;
 }
-.footer .header__button{
+.footer-wrap .header__button{
   margin-bottom: 5px;
+  padding: 8px 25px;
 }
 }
